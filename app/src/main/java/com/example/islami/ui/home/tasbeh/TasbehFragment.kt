@@ -1,18 +1,20 @@
-package com.example.islami.ui.home.fragments
+package com.example.islami.ui.home.tasbeh
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.islami.R
+import com.example.islami.databinding.FragmentTasbehBinding
 
-class HadethFragment : Fragment() {
+class TasbehFragment : Fragment() {
+    lateinit var binding: FragmentTasbehBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_hadeth, container, false)
+        binding = FragmentTasbehBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }

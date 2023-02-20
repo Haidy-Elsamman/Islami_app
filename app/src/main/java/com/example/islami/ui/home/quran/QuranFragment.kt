@@ -1,14 +1,14 @@
-package com.example.islami.ui.home.fragments
+package com.example.islami.ui.home.quran
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import com.example.islami.R
-import com.example.islami.ui.home.fragments.adapters.SuraNameAdapter
+import com.example.islami.databinding.FragmentQuranBinding
+import com.example.islami.ui.Constants
+import com.example.islami.ui.home.quran.suraDetails.SuraDetailsActivity
 
 class QuranFragment : Fragment() {
     val chaptersName = listOf<String>(
@@ -128,47 +128,150 @@ class QuranFragment : Fragment() {
         "الناس"
     )
     val chaptersNumber = listOf<String>(
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176", "120", "165", "206", "75", "129", "109",
-        "7", "286", "200", "176"
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176",
+        "120",
+        "165",
+        "206",
+        "75",
+        "129",
+        "109",
+        "7",
+        "286",
+        "200",
+        "176"
     )
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_quran, container, false)
-    }
-
-    lateinit var recyclerViewQuran: RecyclerView
+    lateinit var binding: FragmentQuranBinding
     lateinit var suraNameAdapter: SuraNameAdapter
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentQuranBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initRecyclerView()
     }
 
     fun initRecyclerView() {
-        recyclerViewQuran = requireView().findViewById(R.id.recycler_view_quran)
         suraNameAdapter = SuraNameAdapter(chaptersName, chaptersNumber)
         suraNameAdapter.onItemClickListener = object : SuraNameAdapter.OnItemClickedListener {
             override fun onItemClick(position: Int, name: String) {
-                Toast.makeText(requireContext(), name, Toast.LENGTH_SHORT).show()
+                showSuraDetails(position, name)
             }
-
         }
-        recyclerViewQuran.adapter = suraNameAdapter
+        binding.recyclerViewQuran.adapter = suraNameAdapter
+    }
+
+    fun showSuraDetails(position: Int, name: String) {
+        val intent = Intent(requireActivity(), SuraDetailsActivity::class.java)
+        intent.putExtra(Constants.EXTRA_SURA_NAME, name)
+        intent.putExtra(Constants.EXTRA_SURA_POSITION, position)
+        startActivity(intent)
     }
 }
