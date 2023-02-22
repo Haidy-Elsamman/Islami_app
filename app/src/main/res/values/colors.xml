@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_primary">#FACC1D</color>
     <color name="dark_variant">#CFAC27</color>
+    <color name="colorTransparent">#00000000</color>
 </resources>

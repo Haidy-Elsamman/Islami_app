@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="homeAsUpIndicator">@color/black</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -22,4 +23,13 @@
     <style name="bottom_navigation_bar_theme">
         <item name="background">@color/colorGold</item>
     </style>
+
+    <style name="Theme.Islami.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Islami.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Islami.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
