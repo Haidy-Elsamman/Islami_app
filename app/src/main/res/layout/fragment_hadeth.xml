@@ -2,14 +2,58 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
 
-    <TextView
+    <ImageView
+        android:id="@+id/hadeth_header"
         android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo_hadeth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorGold"
+        app:layout_constraintTop_toBottomOf="@id/hadeth_header" />
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hadeth"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:gravity="center"
+        android:text="الأحاديث"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line1" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorGold"
+        app:layout_constraintTop_toBottomOf="@id/title_text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_hadeth"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/line2"
+        tools:listitem="@layout/item_hadeth_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>
